@@ -1,0 +1,86 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserType {
+  ADMIN
+  MODERATOR
+  USER
+}
+
+enum AccountType {
+  GOOGLE
+  FACEBOOK
+  EMAIL
+}
+
+model User {
+  userId      Int         @id @default(autoincrement()) @map("user_id")
+  email       String      @unique
+  password    String
+  userType    UserType    @default(USER) @map("user_type")
+  accountType AccountType @default(EMAIL) @map("account_type")
+}
+
+enum ProductCategory {
+  THERMAL_MUG
+  DETERGENT
+  DISHWASHER_CUBE
+}
+
+enum ProductStatus {
+  NEW
+  ACCEPTED
+  REJECTED
+}
+
+model Product {
+  productId Int             @id @default(autoincrement()) @map("product_id")
+  name      String
+  category  ProductCategory
+  content   Json
+  status    ProductStatus   @default(NEW)
+  reviews   Review[]
+}
+
+enum ReviewStatus {
+  NEW
+  ACCEPTED
+  REJECTED
+}
+
+model Review {
+  reviewId  Int          @id @default(autoincrement()) @map("review_id")
+  productId Int          @map("product_id")
+  userId    Int          @map("user_id")
+  content   Json
+  status    ReviewStatus @default(NEW)
+  product   Product      @relation(fields: [productId], references: [productId])
+}
+
+model ReviewHelpfulUser {
+  reviewHelpfulUserId Int @id @default(autoincrement()) @map("reviewHelpfulUser_id")
+  reviewId            Int @map("review_id")
+  userId              Int @map("user_id")
+}
+
+model ReviewUnhelpfulUser {
+  reviewHelpfulUserId Int @id @default(autoincrement()) @map("reviewUnhelpfulUser_id")
+  reviewId            Int @map("review_id")
+  userId              Int @map("user_id")
+}
+
+model EventLog {
+  eventLogId   Int      @id @default(autoincrement()) @map("event_log_id")
+  eventLogDate DateTime @map("event_log_date")
+  userId       Int      @map("user_id")
+  content      Json
+}

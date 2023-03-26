@@ -1,0 +1,5 @@
+;date_info;name;title;content;category;advantages;disadvantages;rating;language;helpful;unhelpful;doubleQuality;verified;product_id;product_source;auction_number;product_name;product_url;product_origin
+0;12.01.2019;Name 1;Title 1;Content 1;positive;Advantege 1, Advantege 2;Disadvantege 1, Disadvantege 2;5;DEU;4;1;TRUE;TRUE;1;Source 1;Auction 1;Product 1;Url 1;DEU
+1;22.05.2017;Name 2;Title 2;Content 2;positive;Advantege 3, Advantege 4;Disadvantege 3, Disadvantege 4;5;DEU;3;2;FALSE;TRUE;2;Source 2;Auction 2;Product 1;Url 2;DEU
+2;22.10.2016;Name 3;Title 3;Content 3;positive;Advantege 5, Advantege 6;Disadvantege 5, Disadvantege 6;5;DEU;2;3;FALSE;TRUE;3;Source 3;Auction 3;Product 1;Url 3;DEU
+3;12.01.2019;Name 4;Title 4;Content 4;positive;Advantege 7, Advantege 8;Disadvantege 7, Disadvantege 8;5;DEU;1;4;TRUE;TRUE;4;Source 4;Auction 4;Product 99;Url 4;DEU
